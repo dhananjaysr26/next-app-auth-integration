@@ -1,4 +1,5 @@
 "use client";
+
 import IconButton from "@/common/ui/IconButton";
 import { useAuthContext } from "@/provider/AuthProvider";
 import { authProvider } from "@/utils/global";
@@ -8,8 +9,8 @@ import React, { useEffect } from "react";
 interface LoginWithContainerProps {}
 
 const LoginWithContainer: React.FC<LoginWithContainerProps> = ({}) => {
-  const { user, signFunctions } = useAuthContext();
   const router = useRouter();
+  const { user, signFunctions } = useAuthContext();
 
   const handleLogin = async (id: string) => {
     const singInFunction = signFunctions[id];
