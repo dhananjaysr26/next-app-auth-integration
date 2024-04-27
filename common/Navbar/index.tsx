@@ -10,6 +10,7 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = ({ navItems }) => {
   const { user, Logout } = useAuthContext();
+  console.log({ user });
 
   const handleLogout = async () => {
     try {
