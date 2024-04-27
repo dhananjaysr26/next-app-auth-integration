@@ -9,9 +9,9 @@ interface IconButtonProps {
   text?: string;
   className?: string;
   iconClass?: string;
-  disabled?: boolean
-  iconHeight?: number
-  iconWeight?: number
+  disabled?: boolean;
+  iconHeight?: number;
+  iconWeight?: number;
 }
 
 const IconButton: React.FC<IconButtonProps> = ({
@@ -23,16 +23,22 @@ const IconButton: React.FC<IconButtonProps> = ({
   iconClass = "",
   disabled = false,
   iconHeight = 32,
-  iconWeight = 32
+  iconWeight = 32,
 }) => {
   const ImageComponent = (
-    <Image src={icon} height={iconHeight} width={iconWeight} alt="icon" className={iconClass} />
+    <Image
+      src={icon}
+      height={iconHeight}
+      width={iconWeight}
+      alt="icon"
+      className={iconClass}
+    />
   );
 
   return (
     <Button
       onClick={handleOnClick}
-      className={`flex items-center gap-1 md:gap-1.5 ${className}`}
+      className={`flex items-center gap-1 md:gap-1.5 bg-black ${className}`}
       disabled={disabled}
     >
       {iconPos === "start" && ImageComponent}
