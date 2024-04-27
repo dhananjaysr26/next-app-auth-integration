@@ -5,6 +5,9 @@ import {
   signOut,
   onAuthStateChanged,
   GoogleAuthProvider,
+  TwitterAuthProvider,
+  FacebookAuthProvider,
+  GithubAuthProvider,
 } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 
@@ -34,7 +37,21 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
   };
-
+  // Twitter Sign in
+  const TwitterSignIn = () => {
+    const provider = new TwitterAuthProvider();
+    signInWithPopup(auth, provider);
+  };
+  // Facebook Sign in
+  const FacebookSignIn = () => {
+    const provider = new FacebookAuthProvider();
+    signInWithPopup(auth, provider);
+  };
+  // GitHub Sign in
+  const GitHubSignIn = () => {
+    const provider = new GithubAuthProvider();
+    signInWithPopup(auth, provider);
+  };
   // LogOut
   const Logout = () => {
     signOut(auth);
@@ -46,8 +63,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     });
     return () => unsubscribe();
   }, [user]);
+
   const signFunctions = {
     google: GoogleSignIn,
+    twitter: TwitterSignIn,
+    "git-hub": GitHubSignIn,
+    facebook: FacebookSignIn,
   };
   const value: AuthContextValue = { user, Logout, signFunctions };
 
